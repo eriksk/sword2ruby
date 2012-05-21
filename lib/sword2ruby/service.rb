@@ -44,8 +44,8 @@ module Sword2Ruby
 
       rxml = nil
 
-      res = connection.get(base, "Accept" => "application/atomsvc+xml")
-      res.validate_content_type(["application/atomsvc+xml"])
+      res = connection.get(base, "Accept" => "application/atomserv+xml")
+      res.validate_content_type(["application/atomserv+xml"])
       
       if res.is_a? Net::HTTPSuccess
         service = self.class.parse(res.body, base, self)
