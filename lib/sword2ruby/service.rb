@@ -48,7 +48,7 @@ module Sword2Ruby
       res.validate_content_type(["application/atomserv+xml"])
       
       if res.is_a? Net::HTTPSuccess
-        service = self.class.parse(res.body, base, self)
+        service = self.class.parse(res.body.force_encoding("ISO-8859-1").encode("UTF-8"), base, self)
 
         #Update workspaces, collections and their feeds to use the Service's http connection
         set_http(connection)
