@@ -24,7 +24,7 @@ module Sword2Ruby
       response = connection.get(sword_statement_uri)
 
       if response.is_a? Net::HTTPSuccess
-         @statement_document = REXML::Document.new(response.body)
+         @statement_document = REXML::Document.new(response.body.force_encoding("ISO-8859-1").encode("UTF-8"))
          @rdf_descriptions = []
          @statement_document.elements.each("/rdf:RDF/rdf:Description") do |description|
            @rdf_descriptions << description
