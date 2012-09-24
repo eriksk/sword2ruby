@@ -160,6 +160,7 @@ module Sword2Ruby
       headers["On-Behalf-Of"] = options[:on_behalf_of] if options[:on_behalf_of]
       headers["X-Packaging"] = "http://purl.org/net/sword-types/METSDSpaceSIP"
       
+      p headers
       response = options[:connection].post(options[:collection_uri], data, headers)
       
       if response.is_a? Net::HTTPSuccess
